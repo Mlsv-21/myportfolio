@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Section</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fdc52c 0%, #f1c0c0 100%);
+            overflow: hidden; /* Prevent scrollbars */
+        }
+        #projects {
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 40px 20px;
+            box-sizing: border-box;
+            perspective: 1000px; /* Adds perspective for 3D effect */
+            backdrop-filter: blur(10px); /* Adds a blur effect to background */
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+            border-radius: 8px; /* Rounded corners */
+        }
+        #projects h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #333;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.6s, box-shadow 0.6s;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg) rotateX(0deg);
+        }
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+        .project-card h3 {
+            font-size: 1.5em;
+            margin: 16px;
+        }
+        .project-card button {
+            background: #1d72b8;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: background 0.3s;
+        }
+        .project-card button:hover {
+            background: #155a8a;
+        }
+        .project-card:hover {
+            transform: rotateY(10deg) rotateX(10deg) translateZ(20px); /* 3D rotation and depth */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform-style: preserve-3d;
+            transform: rotateY(0deg) rotateX(0deg);
+            transition: transform 0.3s;
+        }
+        .modal-content h3 {
+            margin-top: 0;
+        }
+        .modal-content button {
+            background: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+            transition: background 0.3s;
+        }
+        .modal-content button:hover {
+            background: #e60000;
+        }
+
+        /* More Options Button */
+        .more-options {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1d72b8;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0.8;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .more-options:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .more-options i {
+            font-size: 24px;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background-color: #1d72b8;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            width: 200px;
+            z-index: 1000;
+        }
+        .dropdown-menu a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+        .dropdown-menu a:hover {
+            background-color: #155a8a;
+        }
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+    </style>
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="grid">
+            <div class="project-card">
+                <img src="guest.PNG" alt="PHP Guestbook Application Deployment using Kubernetes">
+                <h3>PHP Guestbook Application Deployment using Kubernetes</h3>
+                <button onclick="openModal('modal1')">View Details</button>
+            </div>
+            <div class="project-card">
+                <img src="git.PNG" alt="GitHub Access Monitoring Script Shell Scripting">
+                <h3>GitHub Access Monitoring System using Shell Scripting</h3>
+                <button onclick="openModal('modal2')">View Details</button>
+            </div>
+            <div class="project-card">
+                <img src="aws.PNG" alt="DevOps CodePipeline using AWS">
+                <h3>DevOps CodePipeline using AWS</h3>
+                <button onclick="openModal('modal3')">View Details</button>
+            </div>
+        </div>
+        <a href="index.html" style="color:rgb(9, 9, 7);"><b>Back to Home</b></a>
+    </section>
+
+    <!-- Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <button onclick="closeModal('modal1')">Close</button>
+            <h3>PHP Guestbook Application Deployment using Kubernetes</h3>
+            <p>Deployed a multi-tier PHP guestbook application with a Redis backend on a Kubernetes cluster configured with kubeadm and containerd. Configured a Redis leader and two followers for high availability and deployed multiple frontend instances for scalability. Managed deployments and services with Kubernetes, used ConfigMaps for configuration, and exposed the frontend via a NodePort Service.</p>
+        </div>
+    </div>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <button onclick="closeModal('modal2')">Close</button>
+            <h3>GitHub Access Monitoring System using Shell Scripting</h3>
+            <p>Developed a shell script using GitHub’s API and CURL to automate monitoring of repository access. Integrated authentication with personal access tokens for secure API requests and parsed JSON responses with jq. Managed error handling for network issues and rate limits, showcasing proficiency in shell scripting, API integration, and data parsing. Streamlined access management processes effectively.</p>
+        </div>
+    </div>
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <button onclick="closeModal('modal3')">Close</button>
+            <h3>DevOps CodePipeline using AWS</h3>
+            <p>Implemented a fully automated CI/CD pipeline using AWS CodePipeline, integrating AWS CodeCommit, CodeDeploy, and EC2 instances. Set up a CodeCommit repository to manage source code, configured an EC2 Linux instance with the CodeDeploy agent, and created a CodeDeploy application. Developed and tested the pipeline to automatically build, test, and deploy updates upon code changes. Verified successful deployment by accessing the application via the public IP of the EC2 instance, demonstrating reliable and efficient delivery of features and updates.</p>
+        </div>
+    </div>
+
+    <!-- More Options Button -->
+    <div class="more-options" id="moreOptionsButton">
+        <i class="fas fa-ellipsis-v"></i>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="index.html">Back to Home</a>
+            <a href="education.html">Education</a>
+            <a href="skills.html">Skills</a>
+            <a href="projects.html">Projects</a>
+            <a href="experience.html">Experience</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Toggle the dropdown menu
+        document.getElementById('moreOptionsButton').addEventListener('click', function() {
+            var menu = document.getElementById('dropdownMenu');
+            menu.style.display = (menu.style.display === 'block' ? 'none' : 'block');
+        });
+
+        // Hide the dropdown menu if clicked outside
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.more-options') && !event.target.closest('.more-options')) {
+                var menu = document.getElementById('dropdownMenu');
+                if (menu.style.display === 'block') {
+                    menu.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

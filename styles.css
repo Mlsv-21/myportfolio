@@ -1,0 +1,290 @@
+body {
+    margin: 0;
+    font-family: Maiandra GD, sans-serif;
+    background: #1a1a1a;
+    color: #fff;
+    overflow-x: hidden;
+    transition: background 0.5s, color 0.5s;
+}
+
+body.dark-mode {
+    background: #fff;
+    color: #000;
+}
+
+.title {
+    font-size: 3em;
+    animation: slideIn 1s ease-in-out;
+}
+
+.genre {
+    font-size: 1.5em;
+    animation: slideIn 1.2s ease-in-out;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.main-content {
+    flex: 2;
+    padding: 20px;
+}
+
+.card-1 {
+    position: relative;
+    width: 150px;
+    height: 200px;
+    transition: transform 0.55s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.card-1 .front-face-1, .card-1 .back-face-1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card-1 .back-face-1 {
+    transform: rotateY(180deg);
+}
+
+.card-1:hover {
+    transform: rotateY(180deg);
+}
+
+.profile-image {
+    flex: 1;
+    padding: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.profile-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.navigation-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navigation ul li {
+    display: inline;
+}
+
+.navigation ul li a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 4.2em;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+.tomorrow-section {
+    display: flex;
+    gap: 20px;
+}
+
+.movie {
+    flex: 0 0 auto;
+}
+
+.movie img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.3s;
+}
+
+.movie:hover {
+    transform: scale(1.1);
+}
+
+.movie div {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.btn {
+    background: #ffcc00;
+    padding: 10px 20px;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #e6b800;
+}
+
+h1 {
+    color: #ffcc00;
+    text-align: center;
+    margin-top: 50px;
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 2em;
+    transition: transform 0.3s ease-in-out;
+}
+
+.toggle:active {
+    transform: scale(0.9);
+}
+
+.eye {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #000;
+    position: relative;
+    margin-bottom: 5px;
+    animation: blink 5s infinite;
+}
+
+.eye__inner {
+    width: 7px;
+    height: 7px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+@keyframes blink {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        height: 15px;
+    }
+    10%, 30%, 50%, 70%, 90% {
+        height: 5px;
+    }
+}
+
+.nose {
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    animation: wiggle 3s infinite;
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+.mouth {
+    width: 30px;
+    height: 15px;
+    background: #000;
+    border-radius: 0 0 15px 15px;
+    position: relative;
+    animation: smile 5s infinite;
+}
+
+.mouth .lip_upper {
+    width: 30px;
+    height: 7px;
+    background: #fff;
+    position: absolute;
+    top: -3px;
+    left: 0;
+}
+
+.mouth .lip_bottom {
+    width: 30px;
+    height: 7px;
+    background: #fff;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+}
+
+@keyframes smile {
+    0%, 100% {
+        border-radius: 0 0 15px 15px;
+    }
+    50% {
+        border-radius: 15px 15px 15px 15px;
+    }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
