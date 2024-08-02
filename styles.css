@@ -1,0 +1,347 @@
+/* Ensure the body takes up the full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Prevents scrollbars from appearing */
+    font-family: Maiandra GD, sans-serif;
+    color: #f3f1f3;
+    transition: background 0.5s, color 0.5s;
+}
+
+/* Background video */
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Makes the video cover the entire viewport */
+    z-index: -1; /* Ensures the video is behind other content */
+}
+
+/* Light mode styles */
+body.dark-mode {
+    background: #fff;
+    color: #000;
+}
+
+/* Profile container positioning */
+.profile-container {
+    display: flex;
+    align-items: left; /* Center items vertically */
+    padding: 20px;
+    position: left; /* Ensures it stays above the video */
+    z-index: 1; /* Makes sure this is above the video */
+}
+
+/* Profile image styling */
+.profile-image {
+    flex: 1;
+    padding: 20px;
+    animation: fadeIn 1s ease-in-out;
+    text-align: left; /* Align profile image to the left */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.profile-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Title positioning */
+.title {
+    font-size: 3em;
+    animation: slideIn 1s ease-in-out;
+    text-align: left; /* Align the title to the right */
+    margin: 0; /* Remove margins if they are pushing content down */
+    padding-right: 20px; /* Add some right padding for spacing */
+    position: relative;
+    z-index: 1; /* Keeps it above the video */
+}
+
+/* Genre positioning */
+.genre {
+    font-size: 1.5em;
+    animation: slideIn 1s ease-in-out;
+    text-align: left; /* Align the genre to the right */
+    margin: 0; /* Remove margins if they are pushing content down */
+    padding-right: 20px; /* Add some right padding for spacing */
+    color: rgb(10, 10, 9);
+    position: relative;
+    z-index: 1; /* Keeps it above the video */
+}
+
+/* Main content section */
+.main-content {
+    flex: 2;
+    padding: 20px;
+}
+
+/* Hire Me button styling */
+.hire-me {
+    background: #ffcc00;
+    padding: 10px 20px;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 20px;
+}
+
+.hire-me:hover {
+    background: #e6b800;
+}
+
+/* Profile info section styling */
+.profile-info {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 2; /* Ensures it's above the video */
+}
+
+.hidden {
+    display: none;
+}
+
+/* Navigation container positioning */
+.navigation-container {
+    text-align: center;
+    margin-top: 20px;
+    position: relative; /* Ensures it stays above the video */
+    z-index: 1; /* Makes sure this is above the video */
+}
+
+/* Navigation styling */
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navigation ul li {
+    display: inline;
+}
+
+.navigation ul li a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 4.2em;
+}
+
+/* Image container positioning */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    overflow-x: auto;
+    position: relative; /* Ensures it stays above the video */
+    z-index: 1; /* Makes sure this is above the video */
+}
+
+/* Image section styling */
+.tomorrow-section {
+    display: flex;
+    gap: 20px;
+}
+
+.movie {
+    flex: 0 0 auto;
+}
+
+.movie img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.3s;
+}
+
+.movie:hover {
+    transform: scale(1.1);
+}
+
+.movie div {
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Button styling */
+.btn {
+    background: #ffcc00;
+    padding: 10px 20px;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #e6b800;
+}
+
+/* Headings and paragraph styling */
+h1 {
+    color: #ffcc00;
+    text-align: center;
+    margin-top: 50px;
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Link styling */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+/* Toggle button styling */
+.toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 2em;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1; /* Ensures it stays above the video */
+}
+
+.toggle:active {
+    transform: scale(0.9);
+}
+
+/* Face animation styles */
+.eye {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #000;
+    position: relative;
+    margin-bottom: 5px;
+    animation: blink 5s infinite;
+}
+
+.eye__inner {
+    width: 7px;
+    height: 7px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+/* Eye blinking animation */
+@keyframes blink {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        height: 15px;
+    }
+    10%, 30%, 50%, 70%, 90% {
+        height: 5px;
+    }
+}
+
+/* Nose wiggle animation */
+.nose {
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    animation: wiggle 3s infinite;
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+.mouth {
+    width: 30px;
+    height: 15px;
+    background: #000;
+    border-radius: 0 0 15px 15px;
+    position: relative;
+    animation: smile 5s infinite;
+}
+
+.mouth .lip_upper {
+    width: 30px;
+    height: 7px;
+    background: #fff;
+    position: absolute;
+    top: -3px;
+    left: 0;
+}
+
+.mouth .lip_bottom {
+    width: 30px;
+    height: 7px;
+    background: #fff;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+}
+
+/* Smile animation */
+@keyframes smile {
+    0%, 100% {
+        border-radius: 0 0 15px 15px;
+    }
+    50% {
+        border-radius: 15px 15px 15px 15px;
+    }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1; /* Fixed typo from 10 to 1 */
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
