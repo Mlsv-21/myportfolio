@@ -1,66 +1,46 @@
-body {
+/* Ensure the body takes up the full height */
+html, body {
+    height: 100%;
     margin: 0;
+    overflow: hidden; /* Prevents scrollbars from appearing */
     font-family: Maiandra GD, sans-serif;
-    background: #1a1a1a;
-    color: #fff;
-    overflow-x: hidden;
+    color: #f3f1f3;
     transition: background 0.5s, color 0.5s;
 }
 
+/* Background video */
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Makes the video cover the entire viewport */
+    z-index: -1; /* Ensures the video is behind other content */
+}
+
+/* Light mode styles */
 body.dark-mode {
     background: #fff;
     color: #000;
 }
 
-.title {
-    font-size: 3em;
-    animation: slideIn 1s ease-in-out;
-}
-
-.genre {
-    font-size: 1.5em;
-    animation: slideIn 1.2s ease-in-out;
-}
-
+/* Profile container positioning */
 .profile-container {
     display: flex;
-    justify-content: space-between;
+    align-items: left; /* Center items vertically */
     padding: 20px;
+    position: left; /* Ensures it stays above the video */
+    z-index: 1; /* Makes sure this is above the video */
 }
 
-.main-content {
-    flex: 2;
-    padding: 20px;
-}
-
-.card-1 {
-    position: relative;
-    width: 150px;
-    height: 200px;
-    transition: transform 0.55s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-}
-
-.card-1 .front-face-1, .card-1 .back-face-1 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-}
-
-.card-1 .back-face-1 {
-    transform: rotateY(180deg);
-}
-
-.card-1:hover {
-    transform: rotateY(180deg);
-}
-
+/* Profile image styling */
 .profile-image {
     flex: 1;
     padding: 20px;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
+    text-align: left; /* Align profile image to the left */
+    cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 .profile-image img {
@@ -69,11 +49,75 @@ body.dark-mode {
     border-radius: 10px;
 }
 
-.navigation-container {
-    text-align: center;
+/* Title positioning */
+.title {
+    font-size: 3em;
+    animation: slideIn 1s ease-in-out;
+    text-align: left; /* Align the title to the right */
+    margin: 0; /* Remove margins if they are pushing content down */
+    padding-right: 20px; /* Add some right padding for spacing */
+    position: relative;
+    z-index: 1; /* Keeps it above the video */
+}
+
+/* Genre positioning */
+.genre {
+    font-size: 1.5em;
+    animation: slideIn 1s ease-in-out;
+    text-align: left; /* Align the genre to the right */
+    margin: 0; /* Remove margins if they are pushing content down */
+    padding-right: 20px; /* Add some right padding for spacing */
+    color: rgb(10, 10, 9);
+    position: relative;
+    z-index: 1; /* Keeps it above the video */
+}
+
+/* Main content section */
+.main-content {
+    flex: 2;
+    padding: 20px;
+}
+
+/* Hire Me button styling */
+.hire-me {
+    background: #ffcc00;
+    padding: 10px 20px;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    transition: background 0.3s;
     margin-top: 20px;
 }
 
+.hire-me:hover {
+    background: #e6b800;
+}
+
+/* Profile info section styling */
+.profile-info {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 2; /* Ensures it's above the video */
+}
+
+.hidden {
+    display: none;
+}
+
+/* Navigation container positioning */
+.navigation-container {
+    text-align: center;
+    margin-top: 20px;
+    position: relative; /* Ensures it stays above the video */
+    z-index: 1; /* Makes sure this is above the video */
+}
+
+/* Navigation styling */
 .navigation ul {
     list-style: none;
     padding: 0;
@@ -93,14 +137,18 @@ body.dark-mode {
     font-size: 4.2em;
 }
 
+/* Image container positioning */
 .image-container {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     overflow-x: auto;
+    position: relative; /* Ensures it stays above the video */
+    z-index: 1; /* Makes sure this is above the video */
 }
 
+/* Image section styling */
 .tomorrow-section {
     display: flex;
     gap: 20px;
@@ -127,6 +175,7 @@ body.dark-mode {
     margin-top: 5px;
 }
 
+/* Button styling */
 .btn {
     background: #ffcc00;
     padding: 10px 20px;
@@ -140,6 +189,7 @@ body.dark-mode {
     background: #e6b800;
 }
 
+/* Headings and paragraph styling */
 h1 {
     color: #ffcc00;
     text-align: center;
@@ -151,6 +201,7 @@ p {
     margin-top: 10px;
 }
 
+/* Link styling */
 a {
     display: block;
     text-align: center;
@@ -159,6 +210,7 @@ a {
     text-decoration: none;
 }
 
+/* Toggle button styling */
 .toggle {
     position: fixed;
     bottom: 20px;
@@ -175,12 +227,14 @@ a {
     padding: 10px;
     font-size: 2em;
     transition: transform 0.3s ease-in-out;
+    z-index: 1; /* Ensures it stays above the video */
 }
 
 .toggle:active {
     transform: scale(0.9);
 }
 
+/* Face animation styles */
 .eye {
     width: 15px;
     height: 15px;
@@ -201,6 +255,7 @@ a {
     left: 4px;
 }
 
+/* Eye blinking animation */
 @keyframes blink {
     0%, 20%, 40%, 60%, 80%, 100% {
         height: 15px;
@@ -210,6 +265,7 @@ a {
     }
 }
 
+/* Nose wiggle animation */
 .nose {
     width: 10px;
     height: 10px;
@@ -261,6 +317,7 @@ a {
     left: 0;
 }
 
+/* Smile animation */
 @keyframes smile {
     0%, 100% {
         border-radius: 0 0 15px 15px;
@@ -276,7 +333,7 @@ a {
         opacity: 0;
     }
     to {
-        opacity: 1;
+        opacity: 1; /* Fixed typo from 10 to 1 */
     }
 }
 
