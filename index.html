@@ -7,19 +7,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Background Video -->
+    <video autoplay muted loop id="background-video">
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <header>
         <div class="profile-container">
             <div class="main-content">
                 <div class="title"><b>SUJAY M KAUSHIK</b></div>
-                <div class="genre">DevOps Engineer</div>
-                <div class="schedule">Experienced Analyst Software Engineer | Focusing on DevOps. Skilled in cloud computing, automation tools, and process improvement.</div>
+                <div class="genre"><b>DevOps Engineer</b></div>
+                <button class="hire-me" onclick="navigateToContact()">Hire Me</button>
             </div>
-            <div class="profile-image">
+            <div class="profile-image" onclick="showProfileInfo()">
                 <img src="dev.PNG" alt="Your Image">
             </div>
         </div>
     </header>
-
+    <div class="schedule"></div>
     <div class="navigation-container">
     </div>
 
@@ -66,6 +72,10 @@
             <div class="lip lip_bottom"></div>
         </div>
     </button>
+
+    <div id="profile-info" class="profile-info hidden">
+        <p>Experienced Analyst Software Engineer | Focusing on DevOps. Skilled in cloud computing, automation tools, and process improvement.</p>
+    </div>
 
     <script src="scripts.js"></script>
 </body>
