@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Engineer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop id="background-video">
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <div class="profile-container">
+            <div class="main-content">
+                <div class="title"><b>SUJAY M KAUSHIK</b></div>
+                <div class="genre"><b>DevOps Engineer</b></div>
+                <button class="hire-me" onclick="navigateToContact()">Hire Me</button>
+            </div>
+            <div class="profile-image" onclick="showProfileInfo()">
+                <img src="dev.PNG" alt="Your Image">
+            </div>
+        </div>
+    </header>
+    <div class="schedule"></div>
+    <div class="navigation-container">
+    </div>
+
+    <div class="image-container">
+        <div class="tomorrow-section">
+            <div class="movie">
+                <a href="about.html"><img src="me.PNG" alt="About"></a>
+                <div>About</div>
+            </div>
+            <div class="movie">
+                <a href="education.html"><img src="edu.PNG" alt="Education"></a>
+                <div>Education</div>
+            </div>
+            <div class="movie">
+                <a href="skills.html"><img src="skill.PNG" alt="Skills"></a>
+                <div>Skills</div>
+            </div>
+            <div class="movie">
+                <a href="projects.html"><img src="project.PNG" alt="Projects"></a>
+                <div>Projects</div>
+            </div>
+            <div class="movie">
+                <a href="experience.html"><img src="exper.PNG" alt="Experience"></a>
+                <div>Experience</div>
+            </div>
+            <div class="movie">
+                <a href="contact.html"><img src="contact.PNG" alt="Contact"></a>
+                <div>Contact</div>
+            </div>
+        </div>
+    </div>
+
+    <button class="toggle" aria-label="Toggle dark mode." aria-pressed="false">
+        🌙
+        <div class="eye eye-left">
+            <div class="eye__inner"></div>
+        </div>
+        <div class="eye eye-right">
+            <div class="eye__inner"></div>
+        </div>
+        <div class="nose"></div>
+        <div class="mouth">
+            <div class="lip lip_upper"></div>
+            <div class="lip lip_bottom"></div>
+        </div>
+    </button>
+
+    <div id="profile-info" class="profile-info hidden">
+        <p>Experienced Analyst Software Engineer | Focusing on DevOps. Skilled in cloud computing, automation tools, and process improvement.</p>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
