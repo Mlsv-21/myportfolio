@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevOps Engineer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Background Video -->
     <video autoplay muted loop id="background-video">
         <source src="video.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+    <audio id="intro-sound" src="vii.mp4"></audio>
 
     <header>
         <div class="profile-container">
@@ -21,13 +24,21 @@
                 <button class="hire-me" onclick="navigateToContact()">Hire Me</button>
             </div>
             <div class="profile-image" onclick="showProfileInfo()">
-                <img src="dev.PNG" alt="Your Image">
+                <img src="dev1.PNG" alt="Your Image">
+            </div>
+            <div class="doll-container">
+                <a href="javascript:void(0)" id="doll-click">
+                    <video class="jarvis-small" autoplay muted loop>
+                        <source src="vii.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </a>
             </div>
         </div>
     </header>
+
     <div class="schedule"></div>
-    <div class="navigation-container">
-    </div>
+    <div class="navigation-container"></div>
 
     <div class="image-container">
         <div class="tomorrow-section">
@@ -77,6 +88,95 @@
         <p>Experienced Analyst Software Engineer | Focusing on DevOps. Skilled in cloud computing, automation tools, and process improvement.</p>
     </div>
 
-    <script src="scripts.js"></script>
+    <p id="output"></p>
+
+    <script>
+        // Check if the browser supports Web Speech API
+        const recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const synth = window.speechSynthesis;
+
+        let recognizer;
+
+        if (recognition) {
+            recognizer = new recognition();
+            recognizer.interimResults = false;
+            recognizer.lang = 'en-US';
+
+            function greetUser() {
+                const greeting = "do you have any questions? Feel free to contact Sujay, details in contact section";
+                const utterance = new SpeechSynthesisUtterance(greeting);
+                synth.speak(utterance);
+            }
+
+            function respond(text) {
+                let response;
+                const lowerText = text.toLowerCase();
+
+                if (lowerText.includes('hello')) {
+                    response = 'Hello! How can I assist you today?';
+                } else if (lowerText.includes('your name')) {
+                    response = 'I am Jarvis, Sujay’s voice assistant.';
+                } else if (lowerText.includes('how are you')) {
+                    response = 'I am good buddy, how are you doing!';
+                } else if (lowerText.includes('what time is it')) {
+                    const now = new Date();
+                    const time = now.toLocaleTimeString();
+                    response = `The current time is ${time}.`;
+                } else if (lowerText.includes('who created you')) {
+                    response = 'I was created by a passionate developer.';
+                } else {
+                    response = 'I am not sure how to respond to that. Could you please ask something else?';
+                }
+
+                const utterance = new SpeechSynthesisUtterance(response);
+                synth.speak(utterance);
+            }
+
+            function startJarvis() {
+                greetUser();
+                recognizer.start();
+
+                recognizer.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('output').textContent = `You said: ${transcript}`;
+                    respond(transcript);
+                };
+
+                recognizer.onerror = (event) => {
+                    console.error('Speech recognition error:', event.error);
+                };
+            }
+
+            // Start Jarvis on doll click
+            document.getElementById('doll-click').onclick = function () {
+                const introText = " NOW ME TO INTRODUCE MY SELF, I am Jarvis, a virtual artificial intelligence. iam here to introduce Sujay M Kaushhik, he is DevOps Engineer specializing in cloud computing, automation, and process improvement. !";
+                const utterance = new SpeechSynthesisUtterance(introText);
+                synth.speak(utterance);
+
+                startJarvis();
+            };
+        } else {
+            document.getElementById('output').textContent = 'Speech Recognition not supported';
+        }
+
+        function showProfileInfo() {
+            const profileInfo = document.getElementById('profile-info');
+            profileInfo.classList.toggle('hidden');
+        }
+
+        document.querySelector('.toggle').addEventListener('click', function () {
+            // Toggle dark mode class on body
+            document.body.classList.toggle('dark-mode');
+
+            // Update aria-pressed attribute
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            this.setAttribute('aria-pressed', isDarkMode);
+        });
+
+        function navigateToContact() {
+            window.location.href = 'contact.html';
+        }
+    </script>
 </body>
+
 </html>
