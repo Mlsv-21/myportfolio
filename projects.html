@@ -232,6 +232,11 @@
                 <h3>AWS Auto Scaling and Load Balancing</h3>
                 <button onclick="openModal('modal5')">View Details</button>
             </div>
+            <div class="project-card">
+                <img src="lamda.PNG" alt="AWS Auto Scaling and Load Balancing">
+                <h3>AWS Auto Scaling and Load Balancing</h3>
+                <button onclick="openModal('modal6')">View Details</button>
+            </div>
         </div>
     </section>
 
@@ -285,6 +290,22 @@
 
              </p> 
                 <button onclick="closeModal('modal5')">Close</button>
+        </div>
+    </div>
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <h3>Secure Cloud Infrastructure with AWS VPC</h3>
+            <p>Designed and configured a Virtual Private Cloud (VPC) with custom IP ranges, creating both public and private subnets. Set up route tables, an internet gateway for public subnet internet access, and a NAT gateway for private subnet outbound access. Implemented network security by configuring ACLs and security groups for EC2 instances, and assigned IAM roles with appropriate permissions. Generated an SSH key pair for secure access, validated connectivity by SSHing into instances, and tested network communication between subnets. This project provided hands-on experience in creating a secure and scalable AWS infrastructure.
+            </p>
+            <button onclick="closeModal('modal5')">Close</button>
+        </div>
+    </div>
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <h3>AWS Lambda-Based Orphaned EBS Snapshot Cleaner</h3>
+            <p>I developed an automated solution using AWS Lambda to identify and delete orphaned Elastic Block Store (EBS) snapshots that were no longer associated with any active EC2 instances. The project involved designing and implementing a Python-based Lambda function that leveraged the AWS SDK (Boto3) to query and filter EBS snapshots. To ensure secure and efficient execution, I configured IAM roles and policies, granting the Lambda function the necessary permissions to describe and delete snapshots. Additionally, I set up a CloudWatch Event to trigger the Lambda function periodically, enabling continuous cleanup without requiring manual intervention. Through effective error handling and logging, I ensured that the solution operated reliably and provided valuable insights into its execution. This project not only optimized resource utilization but also contributed to significant cost savings by systematically purging unneeded snapshots, thus enhancing the overall efficiency of the AWS environment.
+            </p>
+            <button onclick="closeModal('modal5')">Close</button>
         </div>
     </div>
 
